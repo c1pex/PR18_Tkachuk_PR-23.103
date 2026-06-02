@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-public class DB2 {
+public class DBSecond {
     private static final String DB_NAME = "mydb2";
     private static final int DB_VERSION = 1;
 
@@ -23,7 +23,7 @@ public class DB2 {
 
     private Context ctx;
 
-    public DB2(Context ctx) {
+    public DBSecond(Context ctx) {
         this.ctx = ctx;
     }
 

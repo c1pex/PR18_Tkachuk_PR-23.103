@@ -11,7 +11,7 @@ import android.widget.SimpleCursorTreeAdapter;
 public class SixthActivity extends Activity {
 
     ExpandableListView elvMain;
-    DB2 db;
+    DBSecond db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +26,16 @@ public class SixthActivity extends Activity {
         });
         elvMain = findViewById(R.id.elvMain);
 
-        db = new DB2(this);
+        db = new DBSecond(this);
         db.open();
 
         Cursor groupCursor = db.getCompanyData();
         startManagingCursor(groupCursor);
 
-        String[] groupFrom = { DB2.COMPANY_NAME };
+        String[] groupFrom = { DBSecond.COMPANY_NAME };
         int[] groupTo = { android.R.id.text1 };
 
-        String[] childFrom = { DB2.PHONE_NAME };
+        String[] childFrom = { DBSecond.PHONE_NAME };
         int[] childTo = { android.R.id.text1 };
 
         SimpleCursorTreeAdapter adapter =
@@ -54,7 +54,7 @@ public class SixthActivity extends Activity {
                     protected Cursor getChildrenCursor(Cursor groupCursor) {
 
                         int id = groupCursor.getInt(
-                                groupCursor.getColumnIndexOrThrow(DB2.COMPANY_ID)
+                                groupCursor.getColumnIndexOrThrow(DBSecond.COMPANY_ID)
                         );
 
                         return db.getPhones(id);

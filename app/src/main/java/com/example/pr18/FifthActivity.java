@@ -17,7 +17,7 @@ public class FifthActivity extends AppCompatActivity {
 
     private static final int CM_DELETE_ID = 1;
 
-    DB db;
+    DBFirst dbFirst;
     Cursor cursor;
     SimpleCursorAdapter adapter;
     ListView lvData;
@@ -36,12 +36,12 @@ public class FifthActivity extends AppCompatActivity {
 
         lvData = findViewById(R.id.lvData);
 
-        db = new DB(this);
-        db.open();
+        dbFirst = new DBFirst(this);
+        dbFirst.open();
 
-        cursor = db.getAllData();
+        cursor = dbFirst.getAllData();
 
-        String[] from = {DB.COLUMN_IMG, DB.COLUMN_TXT};
+        String[] from = {DBFirst.COLUMN_IMG, DBFirst.COLUMN_TXT};
         int[] to = {R.id.ivImg, R.id.tvText};
 
         adapter = new SimpleCursorAdapter(
@@ -60,7 +60,7 @@ public class FifthActivity extends AppCompatActivity {
 
     public void onButtonClick(View v) {
 
-        db.addRec("sometext " + cursor.getCount(), android.R.drawable.ic_menu_gallery);
+        dbFirst.addRec("sometext " + cursor.getCount(), android.R.drawable.ic_menu_gallery);
 
         cursor.requery();
         adapter.notifyDataSetChanged();
@@ -81,7 +81,7 @@ public class FifthActivity extends AppCompatActivity {
             AdapterView.AdapterContextMenuInfo info =
                     (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
-            db.delRec(info.id);
+            dbFirst.delRec(info.id);
 
             cursor.requery();
             adapter.notifyDataSetChanged();
@@ -95,6 +95,6 @@ public class FifthActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        db.close();
+        dbFirst.close();
     }
 }

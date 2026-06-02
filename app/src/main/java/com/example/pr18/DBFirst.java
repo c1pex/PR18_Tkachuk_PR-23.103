@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DB {
+public class DBFirst {
 
     private static final String DB_NAME = "mydb";
     private static final int DB_VERSION = 1;
@@ -20,7 +20,7 @@ public class DB {
     private DBHelper helper;
     private Context context;
 
-    public DB(Context context) {
+    public DBFirst(Context context) {
         this.context = context;
     }
 
